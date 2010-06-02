@@ -189,3 +189,4 @@ alias ack-grep="ack-grep -i"
 alias sources="sudo vim /etc/apt/sources.list"
 
 alias maj_wmfs="cd wmfs && git pull && cd build && sudo make install && cd $HOME && wmfs -c reload"
+alias perldoc-fr="perldoc -L FR"
