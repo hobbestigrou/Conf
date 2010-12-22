@@ -86,5 +86,12 @@ imap \date  <C-R>=strftime("%d/%m/%Y")<CR>
 autocmd BufEnter *.txt set spell
 autocmd BufEnter *.txt set spelllang=fr
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"Documentation
+""""""""""""""""""""""""""""""""""""""""""""""""""
 runtime ftplugin/man.vim
+au BufReadPost *.pl   set keywordprg=perldoc\ -f
+au BufReadPost *.pm   set keywordprg=perldoc\ -f
+au BufReadPost .vimrc map K :exe ":help ".expand("<cword>")<CR>
+
 set omnifunc=syntaxcomplete#Complete
