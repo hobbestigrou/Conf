@@ -94,4 +94,10 @@ au BufReadPost *.pl   set keywordprg=perldoc\ -f
 au BufReadPost *.pm   set keywordprg=perldoc\ -f
 au BufReadPost .vimrc map K :exe ":help ".expand("<cword>")<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"Mapping Perl
+""""""""""""""""""""""""""""""""""""""""""""""""""
+map ps :!perl -c %<CR>
+map pd :!perl -d %<CR>
+
 set omnifunc=syntaxcomplete#Complete
