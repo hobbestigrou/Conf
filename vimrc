@@ -2,7 +2,7 @@
 "Fichier de configuration pour vim
 "Auteur: Natal Ngétal alias Hobbestigrou
 "Site: http://erakis.im
-"Version 0.1
+"Version 0.2
 """"""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""
