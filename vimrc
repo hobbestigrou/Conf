@@ -32,7 +32,7 @@ set numberwidth=3
 """"""""""""""""""""""""""""""""""""""""""
 
 set laststatus=2
-set statusline=%t%m%r%h%w\ [%{GitBranchInfoTokens()[0]}]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [FENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]\
+set statusline=%t%m%r%h%w\ %{fugitive#statusline()}\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [FENC=%{&fileencoding}]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]\
 
 
 """""""""""""""""""""""""""""""""""""""""""
