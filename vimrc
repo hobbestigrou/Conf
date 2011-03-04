@@ -101,3 +101,9 @@ map ps :!perl -c %<CR>
 map pd :!perl -d %<CR>
 
 set omnifunc=syntaxcomplete#Complete
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"Détecter les espaces en fin de ligne
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set list
+set lcs:tab:>-,trail:X
