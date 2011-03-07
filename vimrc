@@ -2,7 +2,7 @@
 "Fichier de configuration pour vim
 "Auteur: Natal Ngétal alias Hobbestigrou
 "Site: http://erakis.im
-"Version 0.3
+"Version 0.4
 """"""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""
@@ -107,3 +107,9 @@ set omnifunc=syntaxcomplete#Complete
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set list
 set lcs:tab:>-,trail:X
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Détecter le type de fichier
+""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype on
+filetype plugin on
