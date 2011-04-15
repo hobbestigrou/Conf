@@ -1,0 +1,10 @@
+#!/usr/bin/zsh
+
+cp vimrc $HOME/.vimrc
+cp -r vim $HOME/.vim
+
+cp xmodmaprc $HOME/.xmodmaprc
+cp xinitrc $HOME/.xinitrc
+
+cp Xdefaults $HOME/.Xdefaults
+
