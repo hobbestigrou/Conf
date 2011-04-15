@@ -2,9 +2,13 @@
 
 cp vimrc $HOME/.vimrc
 cp -r vim $HOME/.vim
+cd $HOME/.vim/ruby/command-t
+ruby extconf.rb
+make
+
+cd $HOME/Conf
 
 cp xmodmaprc $HOME/.xmodmaprc
 cp xinitrc $HOME/.xinitrc
 
 cp Xdefaults $HOME/.Xdefaults
-
