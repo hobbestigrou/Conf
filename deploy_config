@@ -1,5 +1,15 @@
 #!/usr/bin/zsh
 
+function check_user {
+    local ROOT_UID=0
+
+    if [ "$UID" -eq "$ROOT_UID" ]
+    then
+        echo "You must not be root"
+        exit 0
+    fi
+}
+
 function check_directory {
     local current_directory=$(pwd)
 
@@ -35,5 +45,6 @@ function set_system_config() {
     cp Xdefaults $HOME/.Xdefaults
 }
 
+check_user
 set_vim_conf
 set_system_config
