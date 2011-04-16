@@ -1,14 +1,39 @@
 #!/usr/bin/zsh
 
-cp vimrc $HOME/.vimrc
-cp -r vim $HOME/.vim
-cd $HOME/.vim/ruby/command-t
-ruby extconf.rb
-make
+function check_directory {
+    local current_directory=$(pwd)
 
-cd $HOME/Conf
+    if [ current_directory != $HOME/Conf ]
+    then
+        cd $HOME/Conf
+    fi
+}
 
-cp xmodmaprc $HOME/.xmodmaprc
-cp xinitrc $HOME/.xinitrc
+function build_command-t() {
+    cd $HOME/.vim/ruby/command-t
+    ruby extconf.rb
+    echo "Build command-t plugin"
+    make
+    cd $HOME/Conf
+}
 
-cp Xdefaults $HOME/.Xdefaults
+function set_vim_conf() {
+    echo "Delete the actualy .vim directory"
+    rm -rf $HOME/.vim
+
+    echo "Copy .vimrc from git repository"
+    cp vimrc $HOME/.vimrc
+
+    echo "Copy .vim directory from git repository"
+    cp -r vim $HOME/.vim
+    build_command-t
+}
+
+function set_system_config() {
+    cp xmodmaprc $HOME/.xmodmaprc
+    cp xinitrc $HOME/.xinitrc
+    cp Xdefaults $HOME/.Xdefaults
+}
+
+set_vim_conf
+set_system_config
