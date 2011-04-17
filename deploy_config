@@ -52,3 +52,5 @@ set_vim_conf
 set_system_config
 
 echo "The script has $SECONDS secondes to run"
+
+exec zsh
