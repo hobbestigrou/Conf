@@ -40,6 +40,15 @@ function set_vim_conf() {
     build_command-t
 }
 
+function set_wmfs_conf() {
+    check_directory
+    echo "Delete the current .config/wmfs directory"
+    rm -rf $HOME/.config/wmfs
+
+    echo "Copy wmfs directory from git repository"
+    cp -r wmfs $HOME/.config
+}
+
 function set_system_config() {
     check_directory
     cp xmodmaprc $HOME/.xmodmaprc
