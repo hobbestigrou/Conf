@@ -47,6 +47,8 @@ function set_wmfs_conf() {
 
     echo "Copy wmfs directory from git repository"
     cp -r wmfs $HOME/.config
+
+    wmfs -c reload
 }
 
 function set_shell_conf() {
