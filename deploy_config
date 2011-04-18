@@ -49,6 +49,12 @@ function set_wmfs_conf() {
     cp -r wmfs $HOME/.config
 }
 
+function set_shell_conf() {
+    check_directory
+    echo "Copy zshrc from git repository"
+    cp zshrc $HOME/.zshrc
+}
+
 function set_system_config() {
     check_directory
     cp xmodmaprc $HOME/.xmodmaprc
@@ -58,6 +64,8 @@ function set_system_config() {
 
 check_user
 set_vim_conf
+set_wmfs_conf
+set_shell_conf
 set_system_config
 
 echo "The script has $SECONDS secondes to run"
