@@ -7,7 +7,7 @@
 #
 
 #Set the background image
-feh --bg-scale Life_by_Paco_Espinoza.jpg
+feh --bg-fill Life_by_Paco_Espinoza.jpg
 
 xmodmap .xmodmaprc
 
