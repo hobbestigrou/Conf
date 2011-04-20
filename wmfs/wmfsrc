@@ -182,8 +182,8 @@
         [titlebar]
                 stipple   = false
                 height    = 12
-                fg_normal = "#7E89A2"
-                fg_focus  = "#9F9AB3"
+                fg_normal = "#969100"
+                fg_focus  = "#A22613"
 
                 [mouse] button = "1" func = "client_raise" [/mouse]
                 [mouse] button = "1" func = "mouse_move"   [/mouse]
