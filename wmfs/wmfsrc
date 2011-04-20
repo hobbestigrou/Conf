@@ -157,9 +157,9 @@
         client_round         = true
         border_height        = 3
         border_shadow        = true
-        border_normal        = "#191919"
-        border_focus         = "#003366"
-        resize_corner_normal = "#191919"
+        border_normal        = "#3D7A00"
+        border_focus         = "#47A440"
+        resize_corner_normal = "#A43A3A"
         resize_corner_focus  = "#003366"
 
         # Space between tiled clients
