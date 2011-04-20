@@ -123,7 +123,7 @@
         mouse_button_tag_prev      = "5"
 
         [tag]
-                name             = "one"
+                name             = "\i[3;3;20;12;~/globe.png]\   "
                 mwfact           = 0.65
                 nmaster          = 1
                 layout           = "tile_right"
@@ -134,7 +134,7 @@
         [/tag]
 
         # clients option is *DEPRECATED* but works, see [rules] section
-        [tag] name = "two"  clients = {"firefox"} [/tag]
+        [tag] name = "\i[5;6;20;12;~/happy.png]\    "  clients = {"firefox"} [/tag]
         [tag] name = "three" [/tag]
         [tag] name = "four"  [/tag]
         [tag] name = "five"  [/tag]
