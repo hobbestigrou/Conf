@@ -155,7 +155,7 @@
 
 [client]
         client_round         = true
-        border_height        = 3
+        border_height        = 1
         border_shadow        = true
         border_normal        = "#3D7A00"
         border_focus         = "#47A440"
