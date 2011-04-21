@@ -123,7 +123,7 @@
         mouse_button_tag_prev      = "5"
 
         [tag]
-                name             = "one"
+                name             = "\i[3;3;20;12;~/globe.png]\   "
                 mwfact           = 0.65
                 nmaster          = 1
                 layout           = "tile_right"
@@ -134,7 +134,7 @@
         [/tag]
 
         # clients option is *DEPRECATED* but works, see [rules] section
-        [tag] name = "two"  clients = {"firefox"} [/tag]
+        [tag] name = "\i[5;6;20;12;~/happy.png]\    "  clients = {"firefox"} [/tag]
         [tag] name = "three" [/tag]
         [tag] name = "four"  [/tag]
         [tag] name = "five"  [/tag]
@@ -146,7 +146,7 @@
 
 [root]
        # Command you can execute to set the background.
-        background_command = "xsetroot -solid black"
+        background_command = "feh --bg-scale $HOME/Life_by_Paco_Espinoza.jp    g"
 
         [mouse] button = "4" func = "tag_next"              [/mouse]
         [mouse] button = "5" func = "tag_prev"              [/mouse]
@@ -155,11 +155,11 @@
 
 [client]
         client_round         = true
-        border_height        = 3
+        border_height        = 1
         border_shadow        = true
-        border_normal        = "#191919"
-        border_focus         = "#003366"
-        resize_corner_normal = "#191919"
+        border_normal        = "#3D7A00"
+        border_focus         = "#47A440"
+        resize_corner_normal = "#A43A3A"
         resize_corner_focus  = "#003366"
 
         # Space between tiled clients
@@ -182,8 +182,8 @@
         [titlebar]
                 stipple   = false
                 height    = 12
-                fg_normal = "#7E89A2"
-                fg_focus  = "#9F9AB3"
+                fg_normal = "#969100"
+                fg_focus  = "#A22613"
 
                 [mouse] button = "1" func = "client_raise" [/mouse]
                 [mouse] button = "1" func = "mouse_move"   [/mouse]
