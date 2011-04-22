@@ -15,7 +15,7 @@ urxvt*background : black
  !Couleur du text (enfin du premier plan)
 urxvt*foreground : green
  !La police utilisé
-urxvt*font : xft:Bitstream Vera Sans Mono:pixelsize=15
+urxvt*font : xft:unispace:pixelsize=17
  !Le fond transparent
 urxvt*transparent : true
  !Le taux de transparence en % de 0-100 cela assombri et de 100-200 éclaici
