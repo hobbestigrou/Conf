@@ -51,6 +51,18 @@ function set_wmfs_conf() {
     wmfs -c reload
 }
 
+function set_font_conf() {
+    check_directory
+    echo "Delete the current .fonts directory"
+    rm -rf $HOME/.fonts
+
+    echo "Copy font directory from git repository"
+    cp -r fonts $HOME/.fonts
+
+    echo "Build font info caches files"
+    fc-cache -f -v
+}
+
 function set_shell_conf() {
     check_directory
     echo "Copy zshrc from git repository"
@@ -67,6 +79,7 @@ function set_system_config() {
 check_user
 set_vim_conf
 set_wmfs_conf
+set_font_conf
 set_shell_conf
 set_system_config
 
