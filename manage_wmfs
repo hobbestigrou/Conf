@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-function update_wmfs() {
+function update_wmfs {
     cd $HOME/wmfs
     git pull
     make install
@@ -8,12 +8,15 @@ function update_wmfs() {
     cd
 }
 
-function new_install_wmfs() {
+function new_install_wmfs {
+    cd $HOME
     rm -rf $HOME/wmfs
     git clone https://github.com/xorg62/wmfs.git
     cd wmfs
     ./configure
     make
-    make install
+    sudo make install
     cd
 }
+
+new_install_wmfs
