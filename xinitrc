@@ -6,6 +6,8 @@
 # Executed by startx (run your window manager from here)
 #
 
+cd $HOME
+
 #Set the background image
 feh --bg-fill Life_by_Paco_Espinoza.jpg
 
