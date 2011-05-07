@@ -3,7 +3,7 @@
 function update_wmfs {
     cd $HOME/wmfs
     git pull
-    make install
+    sudo make install
     wmfs -c reload
     cd
 }
