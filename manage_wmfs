@@ -19,4 +19,9 @@ function new_install_wmfs {
     cd
 }
 
-new_install_wmfs
+if [ "$1" = 'update' ]
+then
+    update_wmfs
+else
+    new_install_wmfs
+fi
