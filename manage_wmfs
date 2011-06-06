@@ -10,7 +10,10 @@ function update_wmfs {
 
 function new_install_wmfs {
     cd $HOME
-    rm -rf $HOME/wmfs
+    if [ -e "$HOME/wmfs" ]
+    then
+        rm -rf $HOME/wmfs
+    fi
     git clone https://github.com/xorg62/wmfs.git
     cd wmfs
     ./configure
