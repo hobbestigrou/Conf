@@ -1,0 +1,32 @@
+#!/usr/bin/zsh
+
+function update_hftirc {
+    cd $HOME/HFTIrc
+    git pull origin master
+    make clean
+    cmake .
+    make
+    sudo make install
+    cd
+}
+
+function new_install_hftirc {
+    cd $HOME
+    if [ -e "$HOME/HFTIrc" ]
+    then
+        rm -rf $HOME/HFTIrc
+    fi
+    git clone https://github.com/xorg62/hftirc.git
+    cd HFTIrc
+    cmake .
+    make
+    sudo make install
+    cd
+}
+
+if [ "$1" = 'update' ]
+then
+    update_hftirc
+else
+    new_install_hftirc
+fi
