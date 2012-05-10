@@ -23,3 +23,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export EDITOR=vim
 export VISUAL=$EDITOR
+
+#Perlbrew conf
+source $HOME/perl5/perlbrew/etc/bashrc
+perlbrew use perl-5.14.2
