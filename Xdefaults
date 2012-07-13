@@ -33,3 +33,5 @@ urxvt*matcher.button: 1
 ! Catch ugly URLs
 urxvt*cutchars: '"'()*<>[]{|}
 !}}}
+
+urxvt*termName: rxvt
