@@ -19,27 +19,6 @@ function check_directory {
     fi
 }
 
-function build_command-t() {
-    cd $HOME/.vim/ruby/command-t
-    ruby extconf.rb
-    echo "Build command-t plugin"
-    make
-    cd $HOME/Conf
-}
-
-function set_vim_conf() {
-    check_directory
-    echo "Delete the actualy .vim directory"
-    rm -rf $HOME/.vim
-
-    echo "Copy .vimrc from git repository"
-    cp vimrc $HOME/.vimrc
-
-    echo "Copy .vim directory from git repository"
-    cp -r vim $HOME/.vim
-    build_command-t
-}
-
 function set_wmfs_conf() {
     check_directory
     echo "Delete the current .config/wmfs directory"
@@ -77,7 +56,6 @@ function set_system_config() {
 }
 
 check_user
-set_vim_conf
 set_wmfs_conf
 set_font_conf
 set_shell_conf
