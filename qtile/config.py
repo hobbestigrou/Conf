@@ -37,7 +37,6 @@ keys = [
     Key(["mod4"], "Return", lazy.spawn("urxvt")),
     Key(["mod1"], "Tab",    lazy.nextlayout()),
     Key(["mod1"], "w",      lazy.window.kill()),
-    Key(["mod4"], "o",      lazy.layout.Stack()),
     Key(["mod4"], "p", lazy.spawn("dmenu_run")),
 
     Key(["mod1", "control"], "r", lazy.restart()),
