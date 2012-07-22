@@ -1,6 +1,7 @@
 from libqtile.manager import Key, Screen, Group
 from libqtile.command import lazy
 from libqtile import layout, bar, widget
+import socket
 
 keys = [
     Key(
@@ -69,11 +70,13 @@ screens = [
     Screen(
         bottom = bar.Bar(
                     [
-                        widget.GroupBox(),
-                        widget.WindowName(),
-                        widget.TextBox("default", "default config"),
+                        widget.GroupBox(font="Envy Code R"),
+                        widget.WindowName(font="Envy Code R"),
+                        widget.CPUGraph(),
+                        widget.MemoryGraph(),
+                        widget.TextBox("default", socket.gethostname(), font="Envy Code R"),
                         widget.Systray(),
-                        widget.Clock('%Y-%m-%d %a %I:%M %p'),
+                        widget.Clock('%Y-%m-%d %a %I:%M %p', font="Envy Code R"),
                     ],
                     30,
                 ),
