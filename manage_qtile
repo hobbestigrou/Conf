@@ -1,0 +1,87 @@
+#!/usr/bin/zsh
+
+function remove_directory {
+    local directory=$1
+    if [ -e "$HOME/$directory" ]
+    then
+        echo "Remove $directory for new install"
+        sudo rm -rf $HOME/$directory
+    fi
+}
+
+function new_install {
+    echo "Install qtile and dependacy"
+    new_install_libxcb
+    new_install_xpyb-ng
+    install_cairo
+    new_install_py2cairo
+    new_install_qtile
+}
+
+function new_install_libxcb {
+    cd $HOME
+    remove_directory libxcb
+    git clone git://anongit.freedesktop.org/git/xcb/libxcb
+    cd libxcb
+    ./autogen.sh
+    automake -v --add-missing --copy --force
+    make
+    sudo make install
+    cd
+}
+
+function new_install_xpyb-ng {
+    cd $HOME
+    remove_directory xpyb-ng
+    git clone https://github.com/qtile/xpyb-ng.git
+    cd xpyb-ng
+    sudo python setup.py install
+    cd
+}
+
+function install_cairo {
+    cd $HOME
+    remove_directory cairo-1.10.0
+    wget http://cairographics.org/releases/cairo-1.10.0.tar.gz
+    tar -zxvf cairo-1.10.0.tar.gz
+    cd cairo-1.10.0
+    ./autogen.sh --enable-xcb
+    automake -v --add-missing --copy --force
+    make
+    sudo make install
+    cd
+}
+
+function new_install_py2cairo {
+    cd $HOME
+    remove_directory py2cairo
+    git clone git://git.cairographics.org/git/py2cairo
+    cd py2cairo
+    ./autogen.sh --enable-xcb
+    automake -v --add-missing --copy --force
+    make
+    sudo make install
+    cd
+}
+
+function new_install_qtile {
+   cd $HOME
+   remove_directory qtile
+   git clone git://github.com/qtile/qtile.git
+   cd qtile
+   sudo python setup.py install
+}
+
+function update_qtile {
+    cd $HOME/qtile
+    git pull origin master
+    sudo python setup.py install
+    cd
+}
+
+if [ "$1" = 'update' ]
+then
+    update_qtile
+else
+    new_install
+fi
