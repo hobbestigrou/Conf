@@ -12,6 +12,7 @@ function remove_directory {
 function new_install {
     echo "Install qtile and dependacy"
     new_install_libxcb
+    new_install_xpyb
     new_install_xpyb-ng
     install_cairo
     new_install_py2cairo
@@ -24,11 +25,23 @@ function new_install_libxcb {
     git clone git://anongit.freedesktop.org/git/xcb/libxcb
     cd libxcb
     ./autogen.sh
-    automake -v --add-missing --copy --force
+#    automake -v --add-missing --copy --force
     make
     sudo make install
     cd
 }
+
+function new_install_xpyb {
+    cd $HOME
+    remove_directory xpyb
+    git clone git://anongit.freedesktop.org/xcb/xpyb
+    cd xpyb
+    ./autogen.sh
+    ./configure
+    sudo make install
+    cd
+}
+
 
 function new_install_xpyb-ng {
     cd $HOME
@@ -46,7 +59,7 @@ function install_cairo {
     tar -zxvf cairo-1.10.0.tar.gz
     cd cairo-1.10.0
     ./autogen.sh --enable-xcb
-    automake -v --add-missing --copy --force
+#    automake -v --add-missing --copy --force
     make
     sudo make install
     cd
@@ -58,9 +71,9 @@ function new_install_py2cairo {
     git clone git://git.cairographics.org/git/py2cairo
     cd py2cairo
     ./autogen.sh --enable-xcb
-    automake -v --add-missing --copy --force
-    make
-    sudo make install
+#    automake -v --add-missing --copy --force
+#    make
+#    sudo make install
     cd
 }
 
