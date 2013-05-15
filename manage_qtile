@@ -11,12 +11,30 @@ function remove_directory {
 
 function new_install {
     echo "Install qtile and dependacy"
+    install_tools_to_compile
     new_install_libxcb
     new_install_xpyb
     new_install_xpyb-ng
     install_cairo
     new_install_py2cairo
     new_install_qtile
+}
+
+function install_tools_to_compile {
+    is_install_automake=$(dpkg -s automake | grep installed)
+    is_install_libtool=$(dpkg -s libtool | grep installed)
+
+    if [ "$is_install_automake" = "" ]
+    then
+        echo "No automake, setting up automake"
+        sudo apt-get --force-yes --yes install automake
+    fi
+
+    if [ "$is_install_libtool" = "" ]
+    then
+        echo "No automake, setting up libtool"
+        sudo apt-get --force-yes --yes install libtool
+    fi
 }
 
 function new_install_libxcb {
