@@ -4,6 +4,8 @@ from libqtile import layout, bar, widget
 
 import socket
 
+laptop = True
+
 keys = [
     Key(
         ["mod1"], "k",
@@ -68,6 +70,21 @@ layouts = [
     layout.Max(),
     layout.Stack(stacks=2)
 ]
+
+list_widget = [
+    widget.GroupBox(font="Envy Code R"),
+    widget.WindowName(font="Envy Code R"),
+    widget.CPUGraph(),
+    widget.MemoryGraph(),
+    widget.Notify(font="Envy Code R"),
+    widget.TextBox(socket.gethostname(), font="Envy Code R"),
+    widget.Systray(),
+    widget.Clock('%Y-%m-%d %a %I:%M %p', font="Envy Code R"),
+]
+
+if laptop:
+    list_widget.extend([widget.Battery(format="{percent:2.0%}"),
+                       widget.BatteryIcon()])
 
 screens = [
     Screen(
