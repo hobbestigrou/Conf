@@ -1,6 +1,7 @@
-from libqtile.manager import Key, Screen, Group
+from libqtile.config import Key, Screen, Group
 from libqtile.command import lazy
 from libqtile import layout, bar, widget
+
 import socket
 
 keys = [
@@ -60,6 +61,9 @@ for i in groups:
         Key(["mod1", "shift"], i.name, lazy.window.togroup(i.name))
     )
 
+dgroups_key_binder = None
+dgroups_app_rules = []
+
 layouts = [
     layout.Max(),
     layout.Stack(stacks=2)
@@ -73,7 +77,10 @@ screens = [
                         widget.WindowName(font="Envy Code R"),
                         widget.CPUGraph(),
                         widget.MemoryGraph(),
-                        widget.TextBox("default", socket.gethostname(), font="Envy Code R"),
+                        widget.Battery(format="{percent:2.0%}"),
+                        widget.BatteryIcon(),
+                        widget.Notify(font="Envy Code R"),
+                        widget.TextBox(socket.gethostname(), font="Envy Code R"),
                         widget.Systray(),
                         widget.Clock('%Y-%m-%d %a %I:%M %p', font="Envy Code R"),
                     ],
@@ -87,4 +94,5 @@ follow_mouse_focus = True
 cursor_warp = False
 floating_layout = layout.Floating()
 mouse = ()
-
+auto_fullscreen = True
+widget_defaults = {}
