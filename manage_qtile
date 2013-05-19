@@ -96,6 +96,7 @@ function new_install_qtile {
    git clone git://github.com/qtile/qtile.git
    cd qtile
    sudo python setup.py install
+   sudo cp resources/qtile.desktop /usr/share/xsessions
 }
 
 function update_qtile {
