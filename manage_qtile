@@ -21,7 +21,7 @@ function new_install {
 }
 
 function install_tools_to_compile {
-    packages=(automake libtool)
+    packages=(automake libtool pkg-config)
 
     for package in $packages
     do
