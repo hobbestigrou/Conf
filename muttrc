@@ -1,23 +1,53 @@
-# Me
-set from = "hobbestigrou@erakis.im"
-set realname = "Natal Ngétal"
+account-hook . 'unset preconnect imap_user imap_authenticators'
 
-# My credentials
-set smtp_url = "smtp://hobbestigrou@erakis.im@smtp.gmail.com:587/"
-set smtp_pass = "password"
-set imap_user = "hobbestigrou@erakis.im"
-set imap_pass = "password"
+#First account
+account-hook 'imaps://hobbestigrou@erakis.eu@imap.gmail.com:993/' \
+' set imap_user = "hobbestigrou@erakis.eu" \
+imap_pass = "password" '
 
-# My mailboxes
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
+folder-hook 'imaps://hobbestigrou@erakis.eu@imap.gmail.com:993/INBOX' \
+' set imap_user = "hobbestigrou@erakis.eu" \
+imap_pass = "password" \
+smtp_url = "smtp://hobbestigrou@erakis.eu@smtp.gmail.com:587/" \
+smtp_pass = "password" \
+from = "hobbestigrou@erakis.eu" \
+realname = "Natal Ngétal" \
+folder = "imaps://hobbestigrou@erakis.eu@imap.gmail.com:993" \
+spoolfile = "+INBOX" \
+postponed="+[Gmail]/Drafts" \
+mail_check=60 \
+imap_keepalive=300 '
 
-mailboxes +INBOX \
-          +'[Gmail]/Messages envoyés' \
-          +[Gmail]/Spam \
-          +Divers \
-          +'[Gmail]/Tous les messages'
+#Second account
+account-hook 'imaps://hobbestigrou@erakis.im@imap.gmail.com:993/' \
+' set imap_user = "hobbestigrou@erakis.im" \
+imap_pass = "password" '
+
+folder-hook 'imaps://hobbestigrou@erakis.im@imap.gmail.com:993/INBOX' \
+' set imap_user = "hobbestigrou@erakis.im" \
+imap_pass = "password" \
+smtp_url = "smtp://hobbestigrou@erakis.im@smtp.gmail.com:587/" \
+smtp_pass = "password" \
+from = "hobbestigrou@erakis.im" \
+realname = "Natal Ngétal" \
+folder = "imaps://hobbestigrou@erakis.im@imap.gmail.com:993" \
+spoolfile = "+INBOX" \
+postponed="+[Gmail]/Drafts" \
+mail_check=60 \
+imap_keepalive=300 '
+
+mailboxes + 'imaps://hobbestigrou@erakis.eu@imap.gmail.com:993/INBOX' \
+          + 'imaps://hobbestigrou@erakis.im@imap.gmail.com:993/INBOX' \
+          + 'imaps://hobbestigrou@erakis.eu@imap.gmail.com:993/[Gmail]/Messages envoyés' \
+          + 'imaps://hobbestigrou@erakis.im@imap.gmail.com:993/[Gmail]/Messages envoyés' \
+          + 'imaps://hobbestigrou@erakis.eu@imap.gmail.com:993/[Gmail]/Spam' \
+          + 'imaps://hobbestigrou@erakis.im@imap.gmail.com:993/[Gmail]/Spam' \
+          + 'imaps://hobbestigrou@erakis.eu@imap.gmail.com:993/Divers' \
+          + 'imaps://hobbestigrou@erakis.im@imap.gmail.com:993/Divers' \
+          + 'imaps://hobbestigrou@erakis.eu@imap.gmail.com:993/[Gmail]/Tous les messages' \
+          + 'imaps://hobbestigrou@erakis.im@imap.gmail.com:993/[Gmail]/Tous les messages'
+
+
 
 # Where to put the stuff
 set header_cache = "~/.mutt/cache/headers"
