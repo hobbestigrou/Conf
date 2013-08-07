@@ -21,20 +21,18 @@ function new_install {
 }
 
 function install_tools_to_compile {
-    is_install_automake=$(dpkg -s automake | grep installed)
-    is_install_libtool=$(dpkg -s libtool | grep installed)
+    packages=(automake libtool pkg-config)
 
-    if [ "$is_install_automake" = "" ]
-    then
-        echo "No automake, setting up automake"
-        sudo apt-get --force-yes --yes install automake
-    fi
+    for package in $packages
+    do
+        is_install_package=$(dpkg -s $package | grep installed)
 
-    if [ "$is_install_libtool" = "" ]
-    then
-        echo "No automake, setting up libtool"
-        sudo apt-get --force-yes --yes install libtool
-    fi
+        if [ "$is_install_package" = "" ]
+        then
+            echo "No $package, setting up $package"
+            sudo apt-get --force-yes --yes install $pacakge
+        fi
+    done
 }
 
 function new_install_libxcb {
