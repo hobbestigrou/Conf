@@ -101,7 +101,7 @@ screens = [
                         widget.Systray(),
                         widget.Clock('%Y-%m-%d %a %I:%M %p', font="Envy Code R"),
                     ],
-                    30,
+                    28,
                 ),
     ),
 ]
