@@ -41,7 +41,6 @@ function new_install_libxcb {
     git clone git://anongit.freedesktop.org/git/xcb/libxcb
     cd libxcb
     ./autogen.sh
-    make
     sudo make install
     cd
 }
@@ -51,7 +50,6 @@ function new_install_xpyb {
     remove_directory xpyb
     git clone git://anongit.freedesktop.org/xcb/xpyb
     cd xpyb
-    ./autogen.sh
     ./configure
     sudo make install
     cd
@@ -85,6 +83,8 @@ function new_install_py2cairo {
     git clone git://git.cairographics.org/git/py2cairo
     cd py2cairo
     ./autogen.sh --enable-xcb
+    make
+    sudo make install
     cd
 }
 
