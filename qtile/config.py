@@ -79,7 +79,7 @@ list_widget = [
     widget.Notify(font="Envy Code R"),
     widget.TextBox(socket.gethostname(), font="Envy Code R"),
     widget.Systray(),
-    widget.Clock('%Y-%m-%d %a %I:%M %p', font="Envy Code R"),
+    widget.Clock('%Y-%m-%d %a %R', font="Envy Code R"),
 ]
 
 if laptop:
