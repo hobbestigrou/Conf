@@ -43,6 +43,7 @@ keys = [
     Key(["mod4"], "p", lazy.spawn("dmenu_run")),
 
     Key(["mod1", "control"], "r", lazy.restart()),
+    Key(["mod1", "control"], "l", lazy.spawn("slock")),
 ]
 
 groups = [
