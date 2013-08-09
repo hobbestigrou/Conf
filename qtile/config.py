@@ -86,25 +86,7 @@ if laptop:
     list_widget.extend([widget.Battery(format="{percent:2.0%}"),
                        widget.BatteryIcon()])
 
-screens = [
-    Screen(
-        bottom = bar.Bar(
-                    [
-                        widget.GroupBox(font="Envy Code R"),
-                        widget.WindowName(font="Envy Code R"),
-                        widget.CPUGraph(),
-                        widget.MemoryGraph(),
-                        widget.Battery(format="{percent:2.0%}"),
-                        widget.BatteryIcon(),
-                        widget.Notify(font="Envy Code R"),
-                        widget.TextBox(socket.gethostname(), font="Envy Code R"),
-                        widget.Systray(),
-                        widget.Clock('%Y-%m-%d %a %I:%M %p', font="Envy Code R"),
-                    ],
-                    28,
-                ),
-    ),
-]
+screens = [Screen(bottom=bar.Bar(list_widget, 28,), ), ]
 
 main = None
 follow_mouse_focus = True
