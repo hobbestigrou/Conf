@@ -21,7 +21,7 @@ function new_install {
 }
 
 function install_tools_to_compile {
-    packages=(automake libtool pkg-config)
+    packages=(automake libtool pkg-config xsltproc)
 
     for package in $packages
     do
