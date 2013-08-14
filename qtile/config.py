@@ -4,6 +4,8 @@ from libqtile import layout, bar, widget
 
 import socket
 
+from powerline.bindings.qtile.widget import Powerline
+
 laptop = True
 
 keys = [
@@ -80,7 +82,7 @@ list_widget = [
     widget.Notify(font="Envy Code R"),
     widget.TextBox(socket.gethostname(), font="Envy Code R"),
     widget.Systray(),
-    widget.Clock('%Y-%m-%d %a %R', font="Envy Code R"),
+    Powerline(timeout=2)
 ]
 
 if laptop:
