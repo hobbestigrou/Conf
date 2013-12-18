@@ -46,6 +46,19 @@ keys = [
 
     Key(["mod1", "control"], "r", lazy.restart()),
     Key(["mod1", "control"], "l", lazy.spawn("slock")),
+
+    Key(
+        [], 'XF86AudioRaiseVolume',
+        lazy.spawn('amixer -c 0 -q set Master 2dB+')
+    ),
+    Key(
+        [], 'XF86AudioLowerVolume',
+        lazy.spawn('amixer -c 0 -q set Master 2dB-')
+    ),
+    Key(
+        [], 'XF86AudioMute',
+        lazy.spawn('amixer -c 0 -q set Master toggle')
+    ),
 ]
 
 groups = [
@@ -79,8 +92,7 @@ list_widget = [
     widget.WindowName(font="Envy Code R"),
     widget.CPUGraph(),
     widget.MemoryGraph(),
-    widget.Notify(font="Envy Code R"),
-    widget.TextBox(socket.gethostname(), font="Envy Code R"),
+    widget.Volume(font="Envy Code R"),
     widget.Systray(),
     Powerline(timeout=2)
 ]
