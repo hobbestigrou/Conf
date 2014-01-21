@@ -46,7 +46,7 @@ keys = [
 
     Key(["mod1", "control"], "r", lazy.restart()),
     Key(["mod1", "control"], "l", lazy.spawn("slock")),
-
+    Key(["mod1", "control"], "s", lazy.spawn("dbus-send --system --print-reply --dest='org.freedesktop.UPower' /org/freedesktop/UPower org.freedesktop.UPower.Suspend")),
     Key(
         [], 'XF86AudioRaiseVolume',
         lazy.spawn('amixer -c 0 -q set Master 2dB+')
