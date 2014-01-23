@@ -25,13 +25,16 @@ urxvt*shading : 30
 urxvt*tint : black
 
 !Extension
-urxvt*scrollBar : false
-urxvt*perl-lib: /usr/lib/urxvt/perl/
-urxvt*perl-ext-common: default,matcher,searchable-scrollback
-urxvt*urlLauncher: chromium-browser
-urxvt*matcher.button: 1
-! Catch ugly URLs
-urxvt*cutchars: '"'()*<>[]{|}
-!}}}
+urxvt*scrollBar :             false
+urxvt*perl-ext-common:        default,url-select,keyboard-select,tabbed,clipboard
+urxvt.url-select.launcher:    firefox
+urxvt.url-select.underline:   true
+urxvt.keysym.Control-u:       perl:url-select:select_next
+urxvt.keysym.Control-v:       perl:keyboard-select:activate
+urxvt.tabbed.autohide:        true
+urxvt.tabbed.new-button:      true
+urxvt.tabbed.reopen-on-close: yes
+urxvt.keysym.S-C-V:           perl:clipboard:paste
+urxvt.clipboard.autocopy:     true
 
 urxvt*termName: rxvt
