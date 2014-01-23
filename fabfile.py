@@ -35,11 +35,11 @@ def simple_compile(directory):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
+            func(*args, **kwargs)
             with cd(get_directory(directory)):
                 run('./build.sh')
                 sudo('make install')
 
-            return func(*args, **kwargs)
         return wrapper
     return decorator
 
@@ -49,6 +49,7 @@ def simple_compile(directory):
                  'https://github.com/ggreer/the_silver_searcher')
 @simple_compile('the_silver_searcher')
 def install_ag():
+    '''Install the silver search like ack-grep but more speed'''
     require.deb.packages(['automake', 'pkg-config', 'libpcre3-dev',
                           'zlib1g-dev', 'liblzma-dev'])
 
@@ -64,12 +65,15 @@ def get_background():
 
 @task
 def vim():
+    '''To install Vim and vim-mahewin-repository'''
     require.deb.packages(['vim-nox', 'curl'])
     run('curl -L https://github.com/hobbestigrou/Vim-Mahewin-Repository/raw'
         '/master/install.sh | bash')
 
+
 @task
 def full_install():
+    '''To install all tools for a desktop like qtile, vim, background'''
     install_ag()
     get_background()
     vim()
