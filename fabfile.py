@@ -58,9 +58,9 @@ def install_ag():
 def get_background():
     require.deb.packages(['feh'])
 
-    run('wget http://bitbucket.org/tednaleid/vim-shortcut-wallpaper/raw/tip'
-        '/vim-shortcuts.png')
-    run('feh --bg-fill vim-shortcuts.png')
+    with cd(fabtools.user.home_directory('hobbestigrou')):
+        run('wget http://bitbucket.org/tednaleid/vim-shortcut-wallpaper/raw/tip/vim-shortcuts.png')
+        run('feh --bg-fill vim-shortcuts.png')
 
 
 @task
@@ -72,8 +72,32 @@ def vim():
 
 
 @task
+def urxvt():
+    '''To install the urxvt emulator'''
+    file_path = '/usr/lib/urxvt/perl/tabbedex'
+    xdefaults = '.Xdefaults'
+
+    require.deb.packages(['rxvt-unicode-256color'])
+
+    with cd('/usr/lib/urxvt/perl/'):
+        if os.path.exists(file_path):
+            sudo('rm ' + file_path)
+        sudo(
+            'wget https://github.com/stepb/urxvt-tabbedex/raw/master/tabbedex')
+
+    with cd(fabtools.user.home_directory('hobbestigrou')):
+        run('wget https://github.com/hobbestigrou/Conf/raw/master/Xdefaults')
+
+        if os.path.exists(xdefaults):
+            os.remove(xdefaults)
+
+        os.rename('Xdefaults', xdefaults)
+
+
+@task
 def full_install():
     '''To install all tools for a desktop like qtile, vim, background'''
     install_ag()
     get_background()
     vim()
+    urxvt()
