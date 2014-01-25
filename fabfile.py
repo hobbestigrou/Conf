@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+'''This a script to to easily install environment on a debian'''
 
 import os
 
@@ -12,14 +13,19 @@ from functools import wraps
 
 
 def get_directory(directory):
+    '''To get the absolute path of a directory starting from the of the user'''
     home = fabtools.user.home_directory('hobbestigrou')
     return home + '/' + directory
 
 
 def setup_directory(directory, git_url):
+    '''A decorator to clone a project'''
     def decorator(func):
+        '''Decorator'''
         @wraps(func)
         def wrapper(*args, **kwargs):
+            '''Check if the directory exist remove it if, exist and clone the
+               project'''
             param_directory = get_directory(directory)
 
             if os.path.exists(directory):
@@ -32,9 +38,12 @@ def setup_directory(directory, git_url):
 
 
 def simple_compile(directory):
+    '''To compile software from the source'''
     def decorator(func):
+        '''Decorator'''
         @wraps(func)
         def wrapper(*args, **kwargs):
+            '''Run a build.sh and make install'''
             func(*args, **kwargs)
             with cd(get_directory(directory)):
                 run('./build.sh')
@@ -45,9 +54,12 @@ def simple_compile(directory):
 
 
 def install_python_package(directory):
+    '''To install a Python package'''
     def decorator(func):
+        '''Decorator'''
         @wraps(func)
         def wrapper(*args, **kwargs):
+            '''Run a setup install'''
             func(*args, **kwargs)
 
             with cd(get_directory(directory)):
@@ -69,6 +81,7 @@ def install_ag():
 
 @task
 def get_background():
+    '''Install feh and get background from a bitbucket project'''
     require.deb.packages(['feh'])
 
     with cd(fabtools.user.home_directory('hobbestigrou')):
@@ -113,6 +126,7 @@ def urxvt():
                  'https://github.com/Lokaltog/powerline.git')
 @install_python_package('powerline')
 def powerline():
+    '''To install powerline used by qtile'''
     pass
 
 
@@ -123,3 +137,4 @@ def full_install():
     get_background()
     vim()
     urxvt()
+    powerline()
