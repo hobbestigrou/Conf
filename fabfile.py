@@ -44,6 +44,19 @@ def simple_compile(directory):
     return decorator
 
 
+def install_python_package(directory):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            func(*args, **kwargs)
+
+            with cd(get_directory(directory)):
+                sudo('python setup.py install')
+
+        return wrapper
+    return decorator
+
+
 @task
 @setup_directory('the_silver_searcher',
                  'https://github.com/ggreer/the_silver_searcher')
@@ -59,7 +72,8 @@ def get_background():
     require.deb.packages(['feh'])
 
     with cd(fabtools.user.home_directory('hobbestigrou')):
-        run('wget http://bitbucket.org/tednaleid/vim-shortcut-wallpaper/raw/tip/vim-shortcuts.png')
+        run('wget http://bitbucket.org/tednaleid/vim-shortcut-wallpaper/'
+            'raw/tip/vim-shortcuts.png')
         run('feh --bg-fill vim-shortcuts.png')
 
 
@@ -92,6 +106,14 @@ def urxvt():
             os.remove(xdefaults)
 
         os.rename('Xdefaults', xdefaults)
+
+
+@task
+@setup_directory('powerline',
+                 'https://github.com/Lokaltog/powerline.git')
+@install_python_package('powerline')
+def powerline():
+    pass
 
 
 @task
