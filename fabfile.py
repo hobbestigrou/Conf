@@ -37,7 +37,7 @@ def setup_directory(directory, git_url):
     return decorator
 
 
-def simple_compile(directory):
+def simple_compile(directory, is_build):
     '''To compile software from the source'''
     def decorator(func):
         '''Decorator'''
@@ -46,7 +46,8 @@ def simple_compile(directory):
             '''Run a build.sh and make install'''
             func(*args, **kwargs)
             with cd(get_directory(directory)):
-                run('./build.sh')
+                if is_build:
+                    run('./build.sh')
                 sudo('make install')
 
         return wrapper
@@ -72,7 +73,7 @@ def install_python_package(directory):
 @task
 @setup_directory('the_silver_searcher',
                  'https://github.com/ggreer/the_silver_searcher')
-@simple_compile('the_silver_searcher')
+@simple_compile('the_silver_searcher', True)
 def install_ag():
     '''Install the silver search like ack-grep but more speed'''
     require.deb.packages(['automake', 'pkg-config', 'libpcre3-dev',
@@ -128,6 +129,14 @@ def urxvt():
 def powerline():
     '''To install powerline used by qtile'''
     pass
+
+
+@task
+@setup_directory('ldm', 'https://github.com/LemonBoy/ldm')
+@simple_compile('ldm', False)
+def install_ldm():
+    '''Install ldm a lightweight device mounter'''
+    require.deb.packages(['libudev-dev', 'libmount-dev'])
 
 
 @task
