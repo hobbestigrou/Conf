@@ -111,7 +111,8 @@ def urxvt():
         if os.path.exists(file_path):
             sudo('rm ' + file_path)
         sudo(
-            'wget https://github.com/stepb/urxvt-tabbedex/raw/master/tabbedex')
+            'wget https://github.com/shaggytwodope/tabbedex-urxvt/raw/'
+            'master/tabbedex')
 
     with cd(fabtools.user.home_directory('hobbestigrou')):
         run('wget https://github.com/hobbestigrou/Conf/raw/master/Xdefaults')
