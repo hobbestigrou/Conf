@@ -141,9 +141,26 @@ def install_ldm():
 
 
 @task
+def install_i3():
+    """Install i3 a wm"""
+    home = fabtools.user.home_directory('hobbestigrou')
+    directory = get_directory('.i3')
+    current_directory = os.getcwd()
+
+    require.deb.packages(['i3-wm', 'i3status', 'xautolock'])
+    require.python.package('quickswitch-i3')
+
+    if os.path.exists(directory):
+        shutil.rmtree(directory)
+
+    shutil.copytree(current_directory + '/.i3', home + '/.i3')
+
+
+@task
 def full_install():
     '''To install all tools for a desktop like qtile, vim, background'''
     install_ag()
+    install_i3()
     get_background()
     vim()
     urxvt()
