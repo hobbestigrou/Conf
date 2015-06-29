@@ -1,10 +1,11 @@
-#!/usr/bin/env python
+
 # -*- coding: utf-8 -*-
 '''This a script to to easily install environment on a debian'''
 
 import os
 
 from fabric.api import run, sudo, cd, task
+from fabric.contrib.files import exists
 from fabtools import require
 import fabtools
 
@@ -86,9 +87,10 @@ def get_background():
     require.deb.packages(['feh'])
 
     with cd(fabtools.user.home_directory('hobbestigrou')):
-        run('wget http://bitbucket.org/tednaleid/vim-shortcut-wallpaper/'
-            'raw/tip/vim-shortcuts.png')
-        run('feh --bg-fill vim-shortcuts.png')
+        if not exists('vim-shortcuts.png'):
+            run('wget http://bitbucket.org/tednaleid/vim-shortcut-wallpaper/'
+                'raw/tip/vim-shortcuts.png')
+            run('feh --bg-fill vim-shortcuts.png')
 
 
 @task
@@ -159,9 +161,9 @@ def install_i3():
 @task
 def full_install():
     '''To install all tools for a desktop like qtile, vim, background'''
-    install_ag()
-    install_i3()
+    #install_ag()
+    #install_i3()
     get_background()
-    vim()
-    urxvt()
-    powerline()
+    #vim()
+    #urxvt()
+    #powerline()
