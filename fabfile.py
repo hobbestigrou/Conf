@@ -16,7 +16,7 @@ from functools import wraps
 def get_directory(directory):
     '''To get the absolute path of a directory starting from the of the user'''
     home = fabtools.user.home_directory('hobbestigrou')
-    return home + '/' + directory
+    return os.path.join(home, directory)
 
 
 def setup_directory(directory, git_url):
@@ -155,15 +155,17 @@ def install_i3():
     if os.path.exists(directory):
         shutil.rmtree(directory)
 
-    shutil.copytree(current_directory + '/.i3', home + '/.i3')
+    shutil.copytree(
+        os.path.join(current_directory, '.i3'),
+        os.path.join(home, '.i3'))
 
 
 @task
 def full_install():
     '''To install all tools for a desktop like qtile, vim, background'''
-    #install_ag()
-    #install_i3()
+    install_ag()
+    install_i3()
     get_background()
-    #vim()
-    #urxvt()
-    #powerline()
+    vim()
+    urxvt()
+    powerline()
