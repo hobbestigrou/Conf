@@ -117,12 +117,9 @@ def urxvt():
             'master/tabbedex')
 
     with cd(fabtools.user.home_directory('hobbestigrou')):
-        run('wget https://github.com/hobbestigrou/Conf/raw/master/Xdefaults')
-
-        if os.path.exists(xdefaults):
-            os.remove(xdefaults)
-
-        os.rename('Xdefaults', xdefaults)
+        require.file(
+            url='https://github.com/hobbestigrou/Conf/raw/master/Xdefaults',
+            path=xdefaults)
 
 
 @task
