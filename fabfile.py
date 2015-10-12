@@ -159,6 +159,18 @@ def install_i3():
         os.path.join(current_directory, '.i3'),
         os.path.join(home, '.i3'))
 
+@task
+def get_font_envy_code_r():
+    """To get the envy code r font"""
+    with cd(fabtools.user.home_directory('hobbestigrou')):
+        require.files.directory('.fonts', owner='hobbestigrou', use_sudo=True)
+        run(
+            'wget http://download.damieng.com/fonts/original/'
+            'EnvyCodeR-PR7.zip')
+        run('unzip -d .fonts EnvyCodeR-PR7.zip')
+        run('fc-cache -f -v')
+        sudo('fc-cache -f -v')
+
 
 @task
 def full_install():
