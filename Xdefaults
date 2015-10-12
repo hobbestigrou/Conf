@@ -13,7 +13,7 @@ xterm*foreground: green
 !General
 urxvt*background: black
 urxvt*foreground: green
-urxvt*font: xft:Envy Code R:pixelsize=20
+urxvt*font: xft:Envy Code R:pixelsize=10
 urxvt*transparent: true
 urxvt*shading: 30
 urxvt*tint: black
