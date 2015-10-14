@@ -104,17 +104,22 @@ def vim():
 @task
 def urxvt():
     '''To install the urxvt emulator'''
-    file_path = '/usr/lib/urxvt/perl/tabbedex'
     xdefaults = '.Xdefaults'
 
     require.deb.packages(['rxvt-unicode-256color'])
 
     with cd('/usr/lib/urxvt/perl/'):
-        if os.path.exists(file_path):
-            sudo('rm ' + file_path)
-        sudo(
-            'wget https://github.com/shaggytwodope/tabbedex-urxvt/raw/'
-            'master/tabbedex')
+        require.file(
+            url='https://github.com/muennich/urxvt-perls/raw/master/url-select',
+            use_sudo=True)
+        require.file(
+            url='https://github.com/muennich/urxvt-perls/raw/master/'
+                'keyboard-select',
+            use_sudo=True)
+        require.file(
+            url='https://github.com/muennich/urxvt-perls/raw/master/'
+                'clipboard',
+            use_sudo=True)
 
     with cd(fabtools.user.home_directory('hobbestigrou')):
         require.file(
@@ -167,6 +172,7 @@ def get_font_envy_code_r():
         run('unzip -d .fonts EnvyCodeR-PR7.zip')
         run('fc-cache -f -v')
         sudo('fc-cache -f -v')
+
 
 
 @task
